@@ -27,8 +27,10 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         auth = Firebase.auth
         replaceFragment(TextToTextFragment())
 
-        binding.navView.setNavigationItemSelectedListener(this)
-        binding.navView.bringToFront()
+        binding.bottomNavView.background = null
+
+//        binding.navView.setNavigationItemSelectedListener(this)
+//        binding.navView.bringToFront()
     }
 
     private fun replaceFragment(fragment: Fragment) {

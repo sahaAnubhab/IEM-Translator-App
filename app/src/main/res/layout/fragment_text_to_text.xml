@@ -1,14 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F7F7FF"
+    android:orientation="vertical"
     tools:context=".TextToTextFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:text="Text Translation"
+        android:gravity="center_horizontal"
+        android:textSize="32sp"
+        android:textColor="#707070"
+        android:fontFamily="@font/source_serif_pro"
+        android:layout_marginTop="30dp"
+        />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        >
+        <Spinner
+            android:id="@+id/spinnerLang1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/support_simple_spinner_dropdown_item"
+            android:layout_marginHorizontal="10dp"
+            />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/transfer_icon"
+            android:layout_marginHorizontal="10dp"
+            />
+
+        <Spinner
+            android:id="@+id/spinnerLang2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/support_simple_spinner_dropdown_item"
+            android:layout_marginHorizontal="10dp"
+            />
+    </LinearLayout>
+
+
+<!--<EditText-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:minLines="7"-->
+<!--    android:background="@drawable/rectangle_bcg_white"-->
+<!--    android:layout_marginTop="30dp"-->
+<!--    android:layout_marginHorizontal="20dp"-->
+<!--    android:hint="Type something here..."-->
+<!--    android:gravity="start"-->
+<!--    android:padding="20dp"-->
+<!--    android:fontFamily="@font/roboto"-->
+<!--    android:textColor="@color/black"-->
+<!--    />-->
+
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:minLines="7"-->
+<!--        android:background="@drawable/rectangle_bcg_white"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        android:layout_marginHorizontal="20dp"-->
+<!--        android:hint="Type something here..."-->
+<!--        android:gravity="start"-->
+<!--        android:padding="20dp"-->
+<!--        android:fontFamily="@font/roboto"-->
+<!--        android:textColor="@color/black"-->
+<!--        />-->
+
+    <androidx.cardview.widget.CardView
+        card_view:cardPreventCornerOverlap="false"
+        android:id="@+id/card_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        android:layout_margin="20dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <EditText
+                    android:hint="Write something here . . . ."
+                    android:layout_marginBottom="30dp"
+                    android:background="@null"
+                    android:gravity="start"
+                    android:minLines="5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/et_1"
+                    android:layout_marginTop="5dp"
+                    android:textSize="16sp"/>
+
+
+            <ImageView
+                android:id="@+id/delete_button1"
+                android:padding="5dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:layout_below="@id/et_1"
+                android:layout_marginHorizontal="5dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/delete_icon"
+                />
+
+            <ImageView
+                android:id="@+id/speaker_button1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/et_1"
+                android:layout_gravity="end"
+                android:layout_toStartOf="@+id/delete_button1"
+                android:padding="5dp"
+                android:layout_marginHorizontal="5dp"
+                android:src="@drawable/sound_icon" />
+
+            <ImageView
+                android:id="@+id/copy_button1"
+                android:padding="5dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_gravity="end"
+                android:layout_below="@id/et_1"
+                android:layout_toStartOf="@+id/speaker_button1"
+                android:src="@drawable/copy_icon"
+                />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        card_view:cardPreventCornerOverlap="false"
+        android:id="@+id/card_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        android:layout_margin="20dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:hint="Write something here . . . ."
+                android:layout_marginBottom="30dp"
+                android:background="@null"
+                android:gravity="start"
+                android:minLines="5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_2"
+                android:layout_marginTop="5dp"
+                android:textSize="16sp"/>
+
+
+            <ImageView
+                android:id="@+id/delete_button"
+                android:padding="5dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:layout_below="@id/et_2"
+                android:layout_marginHorizontal="5dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/delete_icon"
+                />
+
+            <ImageView
+                android:id="@+id/speaker_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/et_2"
+                android:layout_gravity="end"
+                android:layout_toStartOf="@+id/delete_button"
+                android:padding="5dp"
+                android:layout_marginHorizontal="5dp"
+                android:src="@drawable/sound_icon" />
+
+            <ImageView
+                android:id="@+id/copy_button"
+                android:padding="5dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_gravity="end"
+                android:layout_below="@id/et_2"
+                android:layout_toStartOf="@+id/speaker_button"
+                android:src="@drawable/copy_icon"
+                />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/upgrade_icon"
+        android:layout_gravity="end"
+        android:background="#00FFFFFF"
+        android:layout_marginEnd="23dp"
+        android:elevation="8dp"
+        />
+
+</LinearLayout>
