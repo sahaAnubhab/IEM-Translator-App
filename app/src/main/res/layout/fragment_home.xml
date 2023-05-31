@@ -79,6 +79,7 @@
             android:textSize="28sp" />
 
         <ImageButton
+            android:id="@+id/textToTextTranslationButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -102,6 +103,7 @@
             >
 
             <ImageButton
+                android:id="@+id/speechToTextTranslationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -114,6 +116,7 @@
                 android:src="@drawable/speech_icon" />
 
             <ImageButton
+                android:id="@+id/imageTranslationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"

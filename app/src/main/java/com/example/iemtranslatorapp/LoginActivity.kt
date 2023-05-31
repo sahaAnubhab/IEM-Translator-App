@@ -18,6 +18,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 
 class LoginActivity : AppCompatActivity() {
 
@@ -25,7 +27,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth;
     private lateinit var googleSignInOptions: GoogleSignInOptions
     private lateinit var googleSignInClient: GoogleSignInClient
-
+    private lateinit var db : FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = Firebase.auth
+        db = Firebase.firestore
 
         googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -81,7 +84,14 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUI(user : FirebaseUser?){
         if(user != null){
-            startActivity(Intent(this, ProfileUpdatePage::class.java))
+            db.collection("users").document(auth.currentUser!!.uid).get().addOnCompleteListener {
+                val doc = it.result
+                if (doc.exists()) {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                }else{
+                    startActivity(Intent(this, ProfileUpdatePage::class.java))
+                }
+            }
         }
     }
 
