@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="#F7F7FF"
     android:orientation="vertical"
     tools:context=".TextToTextFragment">
@@ -133,6 +138,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/et_1"
                 android:layout_marginTop="5dp"
+                android:inputType="textMultiLine|textNoSuggestions"
                 android:textSize="16sp"/>
 
 
@@ -201,7 +207,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/et_2"
                 android:layout_marginTop="5dp"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:inputType="textMultiLine|textNoSuggestions"
+                />
 
 
             <ImageView
@@ -254,3 +262,4 @@
         />
 
 </LinearLayout>
+</androidx.core.widget.NestedScrollView>

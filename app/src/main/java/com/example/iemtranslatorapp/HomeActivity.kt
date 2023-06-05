@@ -45,9 +45,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         if (checkPermission()) {
-            //main logic or main code
-            Toast.makeText(this, "Camera perm ", Toast.LENGTH_SHORT).show()
-            // . write your main code to execute, It will execute if the permission is already given.
 
         } else {
             requestPermission();

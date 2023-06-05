@@ -45,7 +45,7 @@ class TextToTextFragment : Fragment() {
 
         val array = arrayOf("English","Hindi", "Chinese")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, array)
-        cm = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            cm = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
         binding.spinnerLang1.adapter = adapter
         binding.spinnerLang1.onItemSelectedListener = object :

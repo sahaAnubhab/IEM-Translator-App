@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.iemtranslatorapp"
-        minSdk 21
+        minSdk 23
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -54,6 +54,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'com.google.mlkit:translate:17.0.1'
+    implementation project(':models')
 
     implementation "androidx.core:core-splashscreen:1.0.1"
 
@@ -74,5 +75,9 @@ dependencies {
     // To recognize Korean script
     implementation 'com.google.mlkit:text-recognition-korean:16.0.0'
 
+    implementation group: 'com.alphacephei', name: 'vosk-android', version: '0.3.32'
+
+    implementation 'com.github.squti:Android-Wave-Recorder:1.7.0'
+    implementation 'net.java.dev.jna:jna:5.8.0@aar'
 
 }
