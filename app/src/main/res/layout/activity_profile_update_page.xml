@@ -88,7 +88,7 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/rectangle_bcg"
             android:fontFamily="@font/cambria"
-            android:hint="Enter your email"
+            android:hint="Enter your E-mail"
             android:paddingVertical="15dp"
             android:textColorHint="#707070"
             android:textSize="18sp" />

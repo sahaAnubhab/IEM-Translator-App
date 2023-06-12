@@ -21,6 +21,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.iemtranslatorapp.databinding.FragmentSpeechToTextBinding
+import com.example.iemtranslatorapp.model.DatabaseHelper
 import com.github.squti.androidwaverecorder.WaveRecorder
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
@@ -54,6 +55,8 @@ class SpeechToTextFragment : Fragment(), RecognitionListener {
     val PERMISSIONS_REQUEST_RECORD_AUDIO = 200
     private var speechStreamService: SpeechStreamService? = null
 
+    private lateinit var dbHelper : DatabaseHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -66,10 +69,12 @@ class SpeechToTextFragment : Fragment(), RecognitionListener {
 
         _binding = FragmentSpeechToTextBinding.inflate(inflater, container, false)
 
+        dbHelper = DatabaseHelper(requireContext())
         val array = arrayOf("English", "Chinese","Hindi", "Japanese", "Korean")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, array)
         cm = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         binding.spinnerLang1.adapter = adapter
+
         binding.spinnerLang1.onItemSelectedListener = object :
             AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -244,14 +249,23 @@ class SpeechToTextFragment : Fragment(), RecognitionListener {
     private fun translate() {
         translator.translate(binding.et1.text.toString()).addOnSuccessListener {
             binding.et2.setText(it)
+            if(binding.et1.text.isNotEmpty() && binding.et2.text.isNotEmpty()) {
+                val tsLong = System.currentTimeMillis() / 1000
+                val ts = tsLong.toString()
+
+                dbHelper.onAdd(binding.et1.text.toString(), it,ts)
+            }
         }
+
+
+        Toast.makeText(context, binding.et1.text.toString(), Toast.LENGTH_SHORT).show()
     }
 
     @Throws(IOException::class)
     private fun startRecordingWav() {
         val time = Calendar.getInstance().timeInMillis
         filePath =
-            Environment.getExternalStorageDirectory().toString() + "/Documents/" + time + ".wav"
+            Environment.getExternalStorageDirectory().toString() + File.separator+ "/Documents/" + time + ".wav"
         val file: File = File(filePath)
         Log.d("helloCan", file.toURI().toString())
         waveRecorder = WaveRecorder(filePath!!)

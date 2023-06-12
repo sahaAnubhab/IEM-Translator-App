@@ -43,18 +43,10 @@
                 android:layout_marginStart="30dp"
                 android:layout_toEndOf="@id/drawer_opener_btn"
                 android:gravity="start"
-                android:text="IEM Tranlator"
+                android:text="IEM Translator"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 app:fontFamily="@font/source_serif_pro" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/menu_button__2_"
-                />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -83,12 +75,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="140dp"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="110dp"
+            android:layout_marginBottom="3dp"
             android:background="?attr/selectableItemBackground"
             android:elevation="3dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginHorizontal="5dp"
-            android:padding="5dp"
+
             android:src="@drawable/text_icon" />
 
         <LinearLayout
@@ -107,12 +99,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginEnd="50dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="?attr/selectableItemBackground"
                 android:elevation="3dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginHorizontal="5dp"
-                android:padding="5dp"
                 android:src="@drawable/speech_icon" />
 
             <ImageButton
@@ -125,8 +115,6 @@
                 android:elevation="20dp"
                 android:stateListAnimator="@null"
                 android:layout_marginBottom="5dp"
-                android:layout_marginHorizontal="5dp"
-                android:padding="5dp"
                 android:src="@drawable/image_icon" />
         </LinearLayout>
     </LinearLayout>

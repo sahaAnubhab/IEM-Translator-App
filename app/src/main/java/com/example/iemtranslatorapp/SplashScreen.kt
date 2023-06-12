@@ -38,15 +38,20 @@ class SplashScreen : AppCompatActivity() {
             if(auth.currentUser == null){
                 startActivity(Intent(this, LoginActivity::class.java))
             }else{
-                db.collection("users").document(auth.currentUser!!.uid).get().addOnCompleteListener {
-                    val doc = it.result
-                    if (doc.exists()) {
-                        startActivity(Intent(this, HomeActivity::class.java))
-                        finish()
-                    }else{
-                        startActivity(Intent(this, ProfileUpdatePage::class.java))
-                        finish()
-                    }
+                if(auth.currentUser!!.isEmailVerified){
+                    db.collection("users").document(auth.currentUser!!.uid).get()
+                        .addOnCompleteListener {
+                            val doc = it.result
+                            if (doc.exists()) {
+                                startActivity(Intent(this, HomeActivity::class.java))
+                                finish()
+                            } else {
+                                startActivity(Intent(this, ProfileUpdatePage::class.java))
+                                finish()
+                            }
+                        }
+                }else{
+                    startActivity(Intent(this, LoginActivity::class.java))
                 }
             }
 

@@ -122,7 +122,7 @@
                 android:layout_below="@id/et_1"
                 android:layout_marginHorizontal="5dp"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/delete_icon"
+                android:src="@drawable/delete_icon__1_"
                 />
 
             <ImageView
@@ -193,7 +193,7 @@
                 android:layout_below="@id/et_2"
                 android:layout_marginHorizontal="5dp"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/delete_icon"
+                android:src="@drawable/delete_icon__1_"
                 />
 
             <ImageView

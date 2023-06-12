@@ -80,39 +80,53 @@
             android:paddingVertical="15dp"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="15dp"
-            android:text="Password"
-            android:textColor="#707070"
-            android:textColorHint="#707070"
-            android:textSize="18sp" />
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_bcg"
-            android:hint="Enter your password"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="5dp"
-            android:textSize="18sp"
-            android:textColorHint="#707070"
-            android:paddingVertical="15dp"
-            />
-        <TextView
-            android:id="@+id/forgotPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="10dp"
-            android:text="Forgot Password"
-            android:layout_marginTop="10dp"
-            android:textColor="#373ae6"
-            android:textSize="16sp"
-            />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="10dp"
+        android:text="Password"
+        android:textColor="#707070"
+        android:textColorHint="#707070"
+        android:textSize="18sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/etPasswordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        app:hintEnabled="false"
+        app:passwordToggleEnabled="true">
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/rectangle_bcg"
+        android:hint="Enter your password"
+        android:inputType="textPassword"
+        android:paddingVertical="15dp"
+        android:textColorHint="#707070"
+        android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="10dp"
+        android:text="Forgot Password"
+        android:layout_marginTop="10dp"
+        android:textColor="#373ae6"
+        android:textSize="16sp"
+        />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signInButton"

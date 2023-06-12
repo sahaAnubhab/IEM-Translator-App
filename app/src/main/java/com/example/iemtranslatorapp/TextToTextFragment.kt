@@ -12,15 +12,14 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import com.example.iemtranslatorapp.databinding.FragmentTextToTextBinding
+import com.example.iemtranslatorapp.model.DatabaseHelper
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.Translator
 import com.google.mlkit.nl.translate.TranslatorOptions
-import java.util.*
+import java.util.Locale
 
 class TextToTextFragment : Fragment() {
 
@@ -30,7 +29,7 @@ class TextToTextFragment : Fragment() {
     lateinit var cm : ClipboardManager
     lateinit var mTTS1 : TextToSpeech
     lateinit var mTTS2 : TextToSpeech
-
+    private lateinit var  db : DatabaseHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,7 +41,7 @@ class TextToTextFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentTextToTextBinding.inflate(inflater, container, false)
-
+        db = DatabaseHelper(requireContext())
         val array = arrayOf("English","Hindi", "Chinese")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, array)
             cm = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -128,11 +127,17 @@ class TextToTextFragment : Fragment() {
             Toast.makeText(context, "Text copied to clipboard.", Toast.LENGTH_SHORT).show()
         }
         binding.deleteButton.setOnClickListener{
+            val tsLong = System.currentTimeMillis() / 1000
+            val ts = tsLong.toString()
+        db.onAdd(binding.et2.text.toString(),binding.et1.text.toString(),ts)
             binding.et1.setText("")
             binding.et2.setText("")
         }
 
         binding.deleteButton1.setOnClickListener{
+            val tsLong = System.currentTimeMillis() / 1000
+            val ts = tsLong.toString()
+            db.onAdd(binding.et2.text.toString(), binding.et1.text.toString(), ts)
             binding.et1.setText("")
             binding.et2.setText("")
         }

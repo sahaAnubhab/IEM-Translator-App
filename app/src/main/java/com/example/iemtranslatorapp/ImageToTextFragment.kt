@@ -21,6 +21,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.iemtranslatorapp.databinding.FragmentImageToTextBinding
+import com.example.iemtranslatorapp.model.DatabaseHelper
 import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translation
 import com.google.mlkit.nl.translate.Translator
@@ -44,10 +45,9 @@ class ImageToTextFragment : Fragment() {
     private lateinit var recognizer : TextRecognizer
     lateinit var translator : Translator
     lateinit var cm : ClipboardManager
-
+    private lateinit var da : DatabaseHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     private fun checkCameraPermission() : Boolean {
@@ -78,7 +78,7 @@ class ImageToTextFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentImageToTextBinding.inflate(inflater, container, false)
-
+        da= DatabaseHelper(requireContext())
         binding.camera.setOnClickListener{
             if(checkCameraPermission()) {
                 imageFromCamera()
@@ -239,8 +239,6 @@ class ImageToTextFragment : Fragment() {
             }
         }
     }
-
-
     private fun recognizeText(image: Bitmap) {
 
         // [START run_detector]
@@ -256,6 +254,10 @@ class ImageToTextFragment : Fragment() {
                     binding.et1.append(text)
                     translator.translate(binding.et1.text.toString()).addOnSuccessListener {
                         binding.et2.setText(it)
+                        val tsLong = System.currentTimeMillis() / 1000
+                        val ts = tsLong.toString()
+                        da.onAdd(it,binding.et1.text.toString(),ts)
+                        Toast.makeText(context, "small", Toast.LENGTH_SHORT).show()
                     }
                 }
                 // [END get_text]

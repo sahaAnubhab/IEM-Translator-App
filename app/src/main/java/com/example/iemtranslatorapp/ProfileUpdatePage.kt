@@ -1,9 +1,9 @@
 package com.example.iemtranslatorapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.example.iemtranslatorapp.databinding.ActivityProfileUpdatePageBinding
 import com.example.iemtranslatorapp.model.User
 import com.google.firebase.auth.FirebaseAuth
@@ -23,6 +23,7 @@ class ProfileUpdatePage : AppCompatActivity() {
 
         auth = Firebase.auth
         val db = Firebase.firestore
+        binding.email.setText(auth.currentUser!!.email)
 
         binding.saveButton.setOnClickListener{
                 val user = User(

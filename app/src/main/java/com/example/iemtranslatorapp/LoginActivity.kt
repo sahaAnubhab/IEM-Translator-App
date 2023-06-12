@@ -66,9 +66,21 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithEmail:success")
-                    val user = auth.currentUser
-                    updateUI(user)
+//                    auth.currentUser?.sendEmailVerification()
+//                        ?.addOnSuccessListener {
+//                            Toast.makeText(this, "Please Verify E-mail", Toast.LENGTH_SHORT).show()
+//
+//                        }
+//                        ?.addOnFailureListener {
+//                            Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+//                        }
+
+                    if(auth.currentUser!!.isEmailVerified){
+                        updateUI(auth.currentUser)
+                    }else{
+                        Toast.makeText(this, "Please verify your email.", Toast.LENGTH_SHORT).show()
+                    }
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
@@ -99,7 +111,11 @@ class LoginActivity : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
-        updateUI(currentUser)
+        if(currentUser != null) {
+            if (currentUser.isEmailVerified) {
+                updateUI(currentUser)
+            }
+        }
     }
 
     private fun signInUserWithGoogleSignIn() {

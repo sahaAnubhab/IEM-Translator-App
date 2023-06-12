@@ -1,10 +1,10 @@
 package com.example.iemtranslatorapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.iemtranslatorapp.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -54,6 +54,11 @@ class RegisterActivity : AppCompatActivity() {
 
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener{task->
             if(task.isSuccessful){
+                auth.currentUser?.sendEmailVerification()?.addOnSuccessListener {
+
+                }?.addOnFailureListener{
+                    Toast.makeText(this, "Could not send email verification.", Toast.LENGTH_SHORT).show()
+                }
                 Log.d(LoginActivity.TAG, "signInWithEmail:success")
                 val user = auth.currentUser
                 updateUI(user)

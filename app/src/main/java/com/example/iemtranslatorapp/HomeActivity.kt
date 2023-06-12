@@ -36,7 +36,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.bottomNavView.background = null
         binding.bottomNavView.setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.profile -> replaceFragment(ProfileFragment())
+                R.id.profile -> replaceFragment(HistoryFragment())
                 R.id.home -> replaceFragment(HomeFragment())
                 R.id.settings -> replaceFragment(SettingsFragment())
 
